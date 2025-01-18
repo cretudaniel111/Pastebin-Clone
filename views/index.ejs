@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pastebin Clone</title>
+    <link rel="stylesheet" href="/style/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Pastebin Clone</h1>
+        <form action="/add" method="post">
+            <textarea name="content" placeholder="Paste your text here"></textarea>
+            <br>
+            <button type="submit">Save</button>
+        </form>
+
+        <h2>Saved texts</h2>
+        <ul>
+            <% texts.forEach(text => { %>
+                <li>
+                    <a href="/text/<%= text.id %>">
+                        <%= text.content.substring(0, 30) %><% if (text.content.length > 30) { %>...<% } %>
+                    </a>
+                </li>
+            <% }); %>
+        </ul>
+    </div>
+</body>
+</html>
